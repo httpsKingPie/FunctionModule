@@ -6,12 +6,12 @@ local module = {}
 --Error detection
 --***********
 
---Ex: FunctionModule.ServerError(script,"Error condition") if doing manually
+--Ex: FunctionModule.ServerError(script.Name,"Error condition") if doing manually
 function module.ServerError(ScriptName,Error)
 	print("Error in " ..ScriptName ..": " ..Error)
 end
 
---Ex: FunctionModule.ClientError(Player/LocalPlayer,script,"Error condition") if doing manually.  Use Player if already defined, use LocalPlayer if in a LocalScript.
+--Ex: FunctionModule.ClientError(Player/LocalPlayer,script.Name,"Error condition") if doing manually.  Use Player if already defined, use LocalPlayer if in a LocalScript.
 function module.ClientError(Player,ScriptName,Error)
 	print(Player.Name .. "caused an error in " ..ScriptName ..": " ..Error)
 end

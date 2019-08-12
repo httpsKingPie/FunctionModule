@@ -142,39 +142,76 @@ FunctionModule.NewAnimationSetup("NewIdle",game.Workspace,123456789)
 
 This would create a new Animation in game.Workspace named "NewIdle" with the AnimationId 123456789
 
---Ex: FunctionModule.WeldConstraint(script.Parent.Part1,game.Workspace.Part2)
-function module.WeldConstraint(PartOne,PartTwo)
-	local Weld = Instance.new("WeldConstraint")
-	Weld.Part0 = PartOne
-	Weld.Part1 = PartTwo
-	Weld.Parent = PartOne
-	return Weld
-end
+**Creating a WeldConstraint**
 
---If you want to print the results do print(unpack(FunctionModule.InPairsSearch("Children",game.Workspace))
---Ex: FunctionModule.InPairsSearch("Children",game.Workspace)
-function module.InPairsSearch(Type,Location)
-	--Type: Children or Descendants
-	--Location: Where the search is taking place
-	if Type ~= "Children" and Type ~= "Descendants" then
-		print("Invalid Type of Search") return
-	end
-	local Array = {}
-	if Type == "Descendants" then
-		for _, Target in pairs(Location:GetDescendants()) do
-			table.insert(Array,Target) 
-		end
-		return Array	
-	end
-	if Type == "Children" then
-		for _,Target in pairs(Location:GetChildren()) do
-			table.insert(Array,Target)
-		end
-		return Array 
-	end
-end
+Use this as:
+```lua
+FunctionModule.WeldConstraint(PartOne,PartTwo)
+```
 
---FunctionModule.Clone(game.Workspace.https_KingPie,game.Workspace)
+PartOne and PartTwo are the two parts that you want to Weld together.  The WeldConstraint will be parented to PartOne.
+
+An example of this in use is:
+```lua
+FunctionModule.WeldConstraint(script.Parent.Part1,game.Workspace.Part2)
+```
+
+**Using for i,v in pairs do... aka Enhanced For Loop in a Shorthand Way**
+
+Note #1: This is returns an array/table of the *values* not the index.  If you're trying to do something with the specific values, it might be better to do this by hand and enclose whatever you're doing in the actual loop.
+
+Use this as:
+```lua
+FunctionModule.InPairsSearch(Type,Location)
+```
+
+Type is either "Children" or "Descendants".  Location is where you want to execute the loop.  For clarification:
+```lua
+FunctionModule.InPairsSearch("Children",game.Workspace)
+```
+is equivalent to:
+```lua
+for i,v in pairs(game.Workspace:GetChildren()) do
+	--etc.
+end
+```
+
+Note #2: If you want to print the results of the InPairsSearch/Enhanced For Loop use:
+
+```lua
+print(unpack(FunctionModule.InPairsSearch(Type,Location))
+```
+
+An example of this in use is:
+```lua
+game.Players.PlayerAdded:Connect(function(Player)
+	local ListOfPlayers = FunctionModule.InPairsSearch("Children",game.Players)
+	print("The players currently in the server are ".. unpack(ListOfPlayers))
+end)
+```
+
+This would return the names of the players in the server every time someone joins the game.
+
+**Clone Instance**
+
+Use this as
+```lua
+FunctionModule.Clone(Target,Parent)
+```
+
+Target is the instance you are cloning.  Parent is the parent of the new cloned instance.
+
+Use this when you want a speedy way to quickly clone a new instance and parent it all in one step.
+
+An example of this in use:
+```lua
+FunctionModule.Clone(game.Workspace.https_KingPie,game.ReplicatedStorage)
+```
+
+This would clone my character and store the instance in ReplicatedStorage>
+
+
+--
 function module.Clone(Target,Parent)
 	local Cloned = Target:Clone()
 	Cloned.Parent = Parent

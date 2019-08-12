@@ -20,7 +20,7 @@ end
 --Development
 --***********
 
---Ex: FunctionModule.LeaderstatsCreate()
+--Ex: FunctionModule.LeaderstatsCreate(Player)
 --[[I would call this with game.Players.PlayerAdded:Connect(function(Player)
 		FunctionModule.LeaderstatsCreate(Player)
 		optionally add this below

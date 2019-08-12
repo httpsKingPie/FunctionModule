@@ -5,7 +5,7 @@ Here's a list of all functions in the FunctionModule with an example of how each
 **Server Error**
 
  Use this as:
- ```lua
+ ```
  FunctionModule.ServerError(script.Name,"Error condition")
  ```
 
@@ -13,21 +13,21 @@ ServerError is used when bug testing a script.  Put this as a condition and can 
 
 An example of this in use is:
 
-```lua
+```
 --This script's name is KingPieCheck
 if game.Workspace.https_KingPie then
-  print("All good!")
-  else
-  Function Module.ServerError(script.Name,"https_KingPie is not loaded")
- end
- ```
+	print("All good!")
+else
+	Function Module.ServerError(script.Name,"https_KingPie is not loaded")
+end
+```
  
 The expected output, if my player is not present, would be "Error in KingPieCheck: https_KingPie is not loaded"
  
 **Client Error**
 
 Use this as:
-```lua
+```
 FunctionModule.ClientError(Player/LocalPlayer,script.name,"Error condition")
 ```
 
@@ -36,38 +36,36 @@ Use Player/plr/Plr or whatever variant you like if this is being used in a scrip
 ClientError is used similarly to ServerError, but you would use this whenever the client messes something up.
 
 An example of this in use is:
-```lua
+```
 --The script is a LocalScript and the script's name is DonateMoney and is parented to DonateValue, a NumberValue
 local DonateValue = script.Parent
 if DonateValue.Value <= 0 then
-  print("All good")
+	print("All good")
 elseif DonateValue.Value >0 or DonateValue.Value == nil then
-  FunctionModule.ClientError(LocalPlayer,script.Name,"Tried to donate a negative or nil amount"
- end
- ```
+	FunctionModule.ClientError(LocalPlayer,script.Name,"Tried to donate a negative or nil amount"
+end
+```
  
- The expected output, if my player donated a negative or nil amount, would be "https_KingPie caused an error in DonateMoney: Tried to donate a negative or nil amount"
+The expected output, if my player donated a negative or nil amount, would be "https_KingPie caused an error in DonateMoney: Tried to donate a negative or nil amount"
 
 **_Development_**
 
 **Create Leaderstats**
 
 Use this as:
-```lua
+```
 FunctionModule.LeaderstatsCreate()
 ```
 
---Ex: FunctionModule.LeaderstatsCreate()
---[[I would call this with game.Players.PlayerAdded:Connect(function(Player)
-		FunctionModule.LeaderstatsCreate(Player)
-		optionally add this below
-		FunctionModule.LeaderstatsCategory(Player,"Kills","IntValue")
-	end)]]
-function module.LeaderstatsCreate(Player)
-	local leaderstats = Instance.new("Folder",Player)
-	leaderstats.Name = "leaderstats"
-	return leaderstats
-end
+This creates leaderstats, simple enough.
+
+An example of this in use is:
+
+```
+game.Players.PlayerAdded:Connect(function(Player)
+	FunctionModule.LeaderstatsCreate(Player)
+end)
+```
 
 --Ex: Above
 function module.LeaderstatsCategory(Player,Name,Type,GroupId)

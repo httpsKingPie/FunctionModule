@@ -208,13 +208,4 @@ An example of this in use:
 FunctionModule.Clone(game.Workspace.https_KingPie,game.ReplicatedStorage)
 ```
 
-This would clone my character and store the instance in ReplicatedStorage>
-
-
---
-function module.Clone(Target,Parent)
-	local Cloned = Target:Clone()
-	Cloned.Parent = Parent
-end
-
-return module
+This would clone my character and store the instance in ReplicatedStorage

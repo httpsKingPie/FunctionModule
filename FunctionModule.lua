@@ -123,6 +123,7 @@ end
 function module.Clone(Target,Parent)
 	local Cloned = Target:Clone()
 	Cloned.Parent = Parent
+	return Cloned
 end
 
 return module

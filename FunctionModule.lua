@@ -119,11 +119,24 @@ function module.InPairsSearch(Type,Location)
 	end
 end
 
---FunctionModule.Clone(game.Workspace.https_KingPie,game.Workspace)
+--Ex: FunctionModule.Clone(game.Workspace.https_KingPie,game.Workspace)
 function module.Clone(Target,Parent)
 	local Cloned = Target:Clone()
 	Cloned.Parent = Parent
 	return Cloned
+end
+
+--Ex: FunctionModule.TweenInformation(5,Enum.EasingStyle.Linear,Enum.EasingDirection.Out,10,true,0)
+function module.TweenInformation(Length,EasingStyle,EasingDirection,TimesToRepeat,Repeat,Delay)
+	local TweenInformation = TweenInfo.new(
+		Length,
+		EasingStyle,
+		EasingDirection,
+		TimesToRepeat,
+		Repeat,
+		Delay
+	)
+	return TweenInformation
 end
 
 return module

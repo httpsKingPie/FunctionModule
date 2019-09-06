@@ -209,3 +209,33 @@ FunctionModule.Clone(game.Workspace.https_KingPie,game.ReplicatedStorage)
 ```
 
 This would clone my character and store the instance in ReplicatedStorage
+
+**Tween Information**
+
+Use this as
+```lua
+FunctionModule.TweenInformation(Length,EasingStyle,EasingDirection,TimesToRepeat,Repeat,Delay)
+```
+
+Length is the length of time for the Tween.  This is a NumberValue.
+EasingStyle is the different EasingStyles.  This is an Enumerated Type.  They can be found by typing Enum.EasingStyle and viewing the suggested options or here: https://developer.roblox.com/en-us/api-reference/enum/EasingStyle
+EasingDirection is the different EasingDirections.  This is an Enumerated Type.  They can be found by typing Enum.EasingDirection and viewing the suggested options or here: https://developer.roblox.com/en-us/api-reference/enum/EasingDirection
+TimesToRepeat is the amount of times you would like the Tween to repeat.  This is a NumberValue.  Note, this will Tween the target to your specified value, tween it back to the original value, and then repeat after that.  The loop will be built in automatically if it is set to repeat.  If it is not set to repeat, the loop will not be included.
+Repeat is a variable that decides whether or not you want the Tween to repeat.  This is a Boolean Value.
+Delay sets the delay between repetitions of the Tween.  This is a NumberValue.
+
+Use this to quickly set up TweenInformation and save space within the script.
+
+An example of this in use:
+
+```lua
+local TweenService = game:GetService("TweenService")
+local TweenInformation = FunctionModule.TweenInformation(2,Enum.EasingStyle.Linear,Enum.EasingDirection.Out,0,false,0)
+
+--To play the tween you would do
+game.Workspace.Part.Transparency = 0
+local Tween = TweenService:Create(game.Workspace.Part,TweenInformation,{Transparency = 1})
+Tween:Play()
+```
+
+This would create a Tween with the specified variables that would ultimately, when run in the code following the TweenInformation portion, tween the Transparency of game.Workspace.Part from 0 to 1 in two seconds.  The Tween will not repeat.

@@ -218,10 +218,15 @@ FunctionModule.TweenInformation(Length,EasingStyle,EasingDirection,TimesToRepeat
 ```
 
 Length is the length of time for the Tween.  This is a NumberValue.
+
 EasingStyle is the different EasingStyles.  This is an Enumerated Type.  They can be found by typing Enum.EasingStyle and viewing the suggested options or here: https://developer.roblox.com/en-us/api-reference/enum/EasingStyle
+
 EasingDirection is the different EasingDirections.  This is an Enumerated Type.  They can be found by typing Enum.EasingDirection and viewing the suggested options or here: https://developer.roblox.com/en-us/api-reference/enum/EasingDirection
+
 TimesToRepeat is the amount of times you would like the Tween to repeat.  This is a NumberValue.  Note, this will Tween the target to your specified value, tween it back to the original value, and then repeat after that.  The loop will be built in automatically if it is set to repeat.  If it is not set to repeat, the loop will not be included.
+
 Repeat is a variable that decides whether or not you want the Tween to repeat.  This is a Boolean Value.
+
 Delay sets the delay between repetitions of the Tween.  This is a NumberValue.
 
 Use this to quickly set up TweenInformation and save space within the script.

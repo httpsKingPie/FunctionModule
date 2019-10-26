@@ -139,4 +139,16 @@ function module.TweenInformation(Length,EasingStyle,EasingDirection,TimesToRepea
 	return TweenInformation
 end
 
+function module.PlayerCheck(Player,Table)
+	for i, v in pairs (Table) do
+		if type(v) == "string" and string.lower(v) == string.lower(Player.Name) then
+			return true
+		elseif type(v) == "number" and v == Player.UserId then
+			return true
+		else 
+			return false
+		end
+	end
+end
+		
 return module

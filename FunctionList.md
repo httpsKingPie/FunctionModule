@@ -244,3 +244,29 @@ Tween:Play()
 ```
 
 This would create a Tween with the specified variables that would ultimately, when run in the code following the TweenInformation portion, tween the Transparency of game.Workspace.Part from 0 to 1 in two seconds.  The Tween will not repeat.
+
+**Player Check**
+
+Use this as
+```lua
+FunctionModule.PlayerCheck(Player,Table)
+```
+
+Player is the player instance of the person you are checking.  Table is a table that holds either usernames, userids, or a mix in your whitelist.
+
+Use this when you want an expediant way to check if a player is in your whitelist.  The function will return true or false if the player is in the table.  This is compatible with both usernames and UserId's.
+
+An example of this in use:
+```lua
+local Whitelist = {"Player1"; "Player2"}
+game:GetService("Players").PlayerAdded:Connect(function(Player)
+	if FunctionModule.PlayerCheck(Player,Whitelist) then
+		print("Player is whitelisted")
+	else
+		print("Player is not whitelisted")
+		Player:Kick("Sorry, you are not a whitelisted player!")
+	end
+end)
+```
+
+This would check every player joining the server and kick them if they are not in the whitelist.

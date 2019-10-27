@@ -140,15 +140,16 @@ function module.TweenInformation(Length,EasingStyle,EasingDirection,TimesToRepea
 end
 
 function module.PlayerCheck(Player,Table)
+	local ReturnedValue = false
 	for i, v in pairs (Table) do
 		if type(v) == "string" and string.lower(v) == string.lower(Player.Name) then
-			return true
+			ReturnedValue = true
 		elseif type(v) == "number" and v == Player.UserId then
-			return true
-		else 
-			return false
+			ReturnedValue = true
 		end
 	end
+			
+	return ReturnedValue
 end
 		
 return module

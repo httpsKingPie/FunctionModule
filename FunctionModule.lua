@@ -154,7 +154,7 @@ end
 		
 function module.Round(Number,NumberOfDecimalPlaces)
 	local Multiple = 10^(NumberOfDecimalPlaces or 0)
-	return math.floor(Number * Multiple + 0.5) / mult
+	return math.floor(Number * Multiple + 0.5) / Multiple
 end
 		
 return module
